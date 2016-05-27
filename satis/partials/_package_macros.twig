@@ -70,13 +70,15 @@
             <tr>
                 <th>Required by</th>
                 <td>
-                    {% set package_dependencies = attribute(dependencies, name) %}
-                    {% if package_dependencies|length %}
-                        <ul>
-                            {% for dependency in package_dependencies %}
-                                <li><a href="#{{ dependency }}">{{ dependency }}</a></li>
-                            {% endfor %}
-                        </ul>
+                    {% if attribute(dependencies, name) is defined %}
+                        {% set package_dependencies = attribute(dependencies, name) %}
+                        {% if package_dependencies|length %}
+                            <ul>
+                                {% for dependency in package_dependencies %}
+                                    <li><a href="#{{ dependency }}">{{ dependency }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     {% endif %}
                 </td>
             </tr>
