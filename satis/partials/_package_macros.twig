@@ -32,8 +32,8 @@
                     <th>Authors</th>
                     <td>
                         {% for author in package.highest.authors %}
-                            {%- if author.homepage -%}
-                                <a href="{{ author.homepage }}">{{ author.name }}</a>
+                            {%- if author.homepage|default(false) -%}
+                                <a href="{{ author.homepage|default() }}">{{ author.name|default() }}</a>
                             {%- else -%}
                                 {{ author.name }}
                             {%- endif -%}
