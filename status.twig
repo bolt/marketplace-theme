@@ -1,0 +1,23 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    <div class="ui grid stackable">
+        <div class="twelve wide column">
+            <div id="lastupdate">
+                Last updated: <time datetime="{{ lastupdate|date(constant('\DateTime::ISO8601')) }}">{{ lastupdate|date(constant('\DateTime::RSS')) }}</time>
+            </div>
+
+            {{ include('satis/partials/_search.twig') }}
+
+            {% import "satis/partials/_package_macros.twig" as macros %}
+
+            {% for name, package in packages %}
+                {{ macros.package_table(name, package) }}
+            {% endfor %}
+        </div>
+    </div>
+
+    {{ include('satis/partials/_script.twig') }}
+
+{% endblock %}
