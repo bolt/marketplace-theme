@@ -17,7 +17,7 @@
     {% for package in packages %}
         <div class="row">
             <div class="large-1 columns">
-                <input type="checkbox" value="1"{% if package.approved %} checked="checked"{% endif %}>
+                <input type="checkbox" value="1"{% if package.approved %} checked="checked"{% endif %} title="" >
             </div>
             <div class="large-2 columns"><p>{{ package.title }}</p></div>
             <div class="large-5 columns"><p><a href="{{ package.source }}">{{ package.source }}</a></p></div>
