@@ -1,0 +1,44 @@
+<script>
+    {% include 'js/jquery-2.2.4.min.js' %}
+    {% include 'js/moment-2.13.0.min.js' %}
+    $(function(){
+        var packages = $('h3');
+        var timer;
+        $('input#search').keyup(function(){
+            clearTimeout(timer);
+            var ms = 350; // milliseconds
+            var needle = $(this).val().toLowerCase(), show;
+            timer = setTimeout(function() {
+                $('#package-list').hide();
+                packages.each(function(){
+                    show = $(this).text().toLowerCase().indexOf(needle) != -1;
+                    $(this).parent().toggle(show);
+                });
+                $('#package-list').show();
+            }, ms);
+        }).focus();
+        $('input#search').change(function(){
+            window.location.hash = "!/" + $(this).val().toLowerCase();
+        });
+        $(window).on("hashchange", function() {
+            var $input = $('input#search');
+            if (window.location.hash.indexOf("#!/") == 0) {
+                $input.val(window.location.hash.replace(/#!\//,"").toLowerCase());
+                $input.trigger("keyup");
+            } else {
+                var $anchor = $("h3[id='"+window.location.hash.replace(/^#/,"")+"']");
+                if ($anchor.length != $anchor.filter(":visible").length) {
+                    $input.val("").trigger("keyup");
+                    $anchor.get(0).scrollIntoView();
+                }
+            }
+        });
+        $(window).trigger("hashchange");
+        var $lastUpdate = $('#lastupdate time');
+        function updateDate() {
+            $lastUpdate.text(moment('{{ "now"|date(constant('\DateTime::ISO8601')) }}').fromNow());
+        }
+        setInterval(updateDate, 5000);
+        updateDate();
+    });
+</script>

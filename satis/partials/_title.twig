@@ -1,0 +1,15 @@
+<div id="hd">
+    <h1>
+        {% if name %}
+            {{ name }}
+        {% else %}
+            The Composer Repository
+        {% endif %}
+    </h1>
+    {% if description %}
+        <p>{{ description|raw }}</p>
+    {% endif %}
+    <div id="lastupdate">
+        Last updated: <time datetime="{{ "now"|date(constant('\DateTime::ISO8601')) }}">{{ "now"|date(constant('\DateTime::RSS')) }}</time>
+    </div>
+</div>
