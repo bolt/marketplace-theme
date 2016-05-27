@@ -6,30 +6,31 @@
 
 <body>
 
-    <div id="doc" class="yui-t7">
-        {{ include('partials/_title.twig') }}
+<div id="doc" class="yui-t7">
 
-        <div id="bd">
-            <div class="yui-g">
+    {{ include('partials/_title.twig') }}
 
-                Filter by package name:
-                <input type="text" id="search" autocomplete="off" title="" autofocus />
+    <div id="bd">
+        <div class="yui-g">
 
-                <div id="package-list">
+            <label>Filter by package name:</label>
+            <input type="text" id="search" autocomplete="off" title="" autofocus />
 
-                    {% import "partials/_package_macros.twig" as macros %}
+            <div id="package-list">
 
-                    {% for name, package in packages %}
-                        {{ macros.package_table(name, package) }}
-                    {% endfor %}
+                {% import "partials/_package_macros.twig" as macros %}
 
-                </div>
+                {% for name, package in packages %}
+                    {{ macros.package_table(name, package) }}
+                {% endfor %}
+
             </div>
         </div>
-
-        {{ include('partials/_footer.twig') }}
-
     </div>
+
+    {{ include('partials/_footer.twig') }}
+
+</div>
 
     {{ include('partials/_script.twig') }}
 
