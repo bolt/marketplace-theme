@@ -15,7 +15,7 @@ Type: {% if "bolt-extension" == package.type %}plugin{% else %}theme{% endif %}<
 <br><br>
 Source: <a href="{{ package.source }}">{{ package.source }}</a>
                 ]]></description>
-            <pubDate>{{ package.created|date(r) }}</pubDate>
+            <pubDate>{{ package.created|date('r') }}</pubDate>
         </item>
         {% endfor %}
     </channel>
