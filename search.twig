@@ -9,7 +9,7 @@
         {% if term %}
             <div data-alert class="ui blue message">Results for your search: '{{ term }}'</div>{% endif %}
 
-        {% include 'partials/_packages.twig' with {'packages':results} %}
+        {{ include('partials/_packages.twig', {'packages': results}) }}
 
     {% endif %}
 {% endblock %}
