@@ -13,7 +13,7 @@
             {% import "satis/partials/_package_macros.twig" as macros %}
 
             {% for name, package in packages %}
-                {{ macros.package_table(name, package) }}
+                {{ macros.package_table(name, package, dependencies) }}
             {% endfor %}
         </div>
     </div>

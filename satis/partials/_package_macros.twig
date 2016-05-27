@@ -1,4 +1,4 @@
-{% macro package_table(name, package) %}
+{% macro package_table(name, package, dependencies) %}
     <div>
         <h3 id="{{ package.highest.name }}">{{ package.highest.name }}<a href="#{{ package.highest.name }}"><small>¶</small></a></h3>
         {% if package.abandoned %}
