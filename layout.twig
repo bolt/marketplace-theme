@@ -1,3 +1,4 @@
+{%- if is_member() %}{% set member = member() %}{% endif -%}
 <!doctype html>
 <html>
 <head>
@@ -14,8 +15,7 @@
           rel='stylesheet'
           type='text/css'>
 
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ app.paths.theme }}/semantic/semantic.min.css">
     <script src="{{ app.paths.theme }}/semantic/semantic.min.js"></script>
     <script src="{{ app.paths.theme }}/js/app.js"></script>
@@ -25,10 +25,11 @@
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function() {
-                        (i[r].q = i[r].q || []).push(arguments)
-                    }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
+                (i[r].q = i[r].q || []).push(arguments)
+            };
+            i[r].l = 1 * new Date();
+            a = s.createElement(o);
+            m = s.getElementsByTagName(o)[0];
             a.async = 1;
             a.src = g;
             m.parentNode.insertBefore(a, m)
@@ -36,9 +37,9 @@
 
         ga('create', '{{ getenv('GA_CODE') }}', 'auto');
 
-        {% if app.request.get('isLoggedIn') %}
+        {% if is_member() %}
         ga('set', 'dimension1', '1');
-        ga('set', 'userId', '{{ app.request.get('user').id }}');
+        ga('set', 'userId', '{{ member.guid }}');
         {% else %}
         ga('set', 'dimension1', '0');
         {% endif %}
@@ -55,13 +56,11 @@
 
 <div class="ui inverted menu small no_radius" id="top_bar">
     <a class="item" href="/">Home</a>
-
     {% if is_member() %}
-        {% set member = member() %}
         <a class="item" href="{{ url('profile') }}">Your Profile ({{ member.displayname }})</a>
-        <a class="item" href="{{ url('logout') }}">Logout</a>
+        <a class="item" href="{{ url('authenticationLogout') }}">Logout</a>
     {% else %}
-        <a class="item" href="{{ url('login') }}">Login</a>
+        <a class="item" href="{{ url('authenticationLogin') }}">Login</a>
     {% endif %}
     <a class="item" href="{{ url('submit') }}">Submit an Extension</a>
 </div>
