@@ -49,6 +49,12 @@
                     </p>
                     <div class="ui inverted segment"><code>{{ callback }}</code></div>
                 </div>
+            {% else %}
+                <div class="ui segment">
+                    <h2 class="ui header">Webhook</h2>
+
+                    <p>Package repository appears to have a valid webhook.</p>
+                </div>
             {% endif %}
 
         </div>
