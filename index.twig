@@ -7,6 +7,11 @@
     </div>
 {% endblock %}
 
+{% block header_extra_scripts %}
+    <script src="{{ app.paths.theme }}js/more.js"></script>
+    <script type="text/javascript">var easter_egg = new Konami('http://rickrolled.fr/');</script>
+{% endblock %}
+
 {% block content %}
 
     <div class="module_big_search">
@@ -158,9 +163,4 @@
 
     </div>
 
-{% endblock %}
-
-{% block header_extra_scripts %}
-    <script src="{{ app.paths.theme }}/js/more.js"></script>
-    <script type="text/javascript">var easter_egg = new Konami('http://rickrolled.fr/');</script>
 {% endblock %}
