@@ -29,21 +29,25 @@
                     <div class="sub header">by {{ package.authors|join(', ') }}</div>
                 </div>
             </h2>
-            <!-- <div>Last Update: 13/08/2015</div> -->
         </div>
         <div class="right floated right aligned eight wide column">
 
-            <div class="buttons_header">
+            <div class="ui icon buttons">
 
                 {% if is_member() %}
                     {% set member = member() %}
                     {% if member.guid == package.account_id %}
-                        <div class="buttons_header">
-                            <a href="{{ url('edit',{'package':package.id}) }}" class="ui primary button"> Edit
-                                <i class="right wrench icon"></i> </a> <a href="{{ url('update',{'package':package.id}) }}"
-                                                                          class="ui orange button"> Update
-                                <i class="right repeat icon"></i> </a>
-                        </div>
+                        <a href="{{ url('edit',{'package':package.id}) }}" class="ui primary button"> Edit<i class="right wrench icon"></i> </a>
+                        <a href="{{ url('update',{'package':package.id}) }}" class="ui orange button"> Update<i class="right repeat icon"></i> </a>
+                        {% if webhook and not webhook.latest %}
+                            <form action="{{ url('hookCreator') }}" method="post">
+                                <input type="hidden" name="user" value="{{ webhook.user }}">
+                                <input type="hidden" name="repo" value="{{ webhook.repo }}">
+                                <input type="hidden" name="token" value="{{ webhook.token }}">
+
+                                <button type="submit" class="ui green button">Add GitHub webhook<i class="right wrench icon"></i></button>
+                            </form>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
 
@@ -68,31 +72,33 @@
 
             <div class="ui right floated main menu">
                 <a class="bug popup icon item" data-content="Downloads" href="#">
-                    <i class="download icon"> {{ statistics.downloads(package.id)|default(0) }}</i> </a>
+                    <i class="download icon"> {{ statistics.downloads(package.id)|default(0) }}</i>
+                </a>
 
-                <a class="bug popup icon item"
-                        {% if is_member() %}
-                            {% if statistics.isStarredBy(package.id, member.guid) %}
-                            {% else %}
-                                href="{{ url('star', { 'package': package.id }) }}"
-                                onclick="ga('send', 'event', {
-                                        eventCategory: 'Package',
-                                        eventAction: 'Star',
-                                        eventLabel: '{{ package.title }}'
-                                        });"
-                            {% endif %}
-                        {% endif %}
-                   data-content="
                 {% if is_member() %}
                     {% if statistics.isStarredBy(package.id, member.guid) %}
-                        You have starred this package.
+                        {% set star_text = "You have starred this package." %}
                     {% else %}
-                        Star this package!
+                        {% set star_text = "Star this package!" %}
                     {% endif %}
                 {% else %}
-                    You must be logged in to star packages.
+                    {% set star_text = "You must be logged in to star packages." %}
                 {% endif %}
-                "> <i class="star icon"> {{ statistics.stars(package.id)|default(0) }}</i> </a>
+                <a class="bug popup icon item"
+                    {% if is_member() %}
+                        {% if statistics.isStarredBy(package.id, member.guid) %}
+                        {%- else %}
+                            href="{{ url('star', { 'package': package.id }) }}"
+                            onclick="ga('send', 'event', {
+                                    eventCategory: 'Package',
+                                    eventAction: 'Star',
+                                    eventLabel: '{{ package.title }}'
+                                    });"
+                        {% endif %}
+                    {% endif %}
+                    data-content="{{ star_text }}">
+                    <i class="star icon"> {{ statistics.stars(package.id)|default(0) }}</i>
+                </a>
 
                 <a class="github popup icon item"
                    data-content="View source code"
