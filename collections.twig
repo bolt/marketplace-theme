@@ -1,0 +1,21 @@
+{% extends "layout.twig" %}
+
+{% block header_title %} | Extension Collections{% endblock %}
+
+{% block content %}
+    <h1>Collections</h1>
+
+    <div class="ui cards">
+        {% for record in records %}
+            <div class="ui card">
+                <div class="content">
+                    <div class="header">{{ record.title }}</div>
+                    <div class="description">
+                        <p>{{ record.excerpt(80) }}</p>
+                        <a class="ui button" href="{{ record.link }}">View Collection</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
