@@ -2,7 +2,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {{ include('partials/_layout_header.twig') }}
+    {% block header_meta %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    {% endblock header_meta %}
+
+    <!-- Site Properties -->
+    <title>Bolt Store {% block header_title %}{% endblock %}</title>
+
+    {% block header_stylesheets %}
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,600italic,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="{{ app.paths.theme }}/semantic/semantic.min.css">
+    {% endblock header_stylesheets %}
+
+    {% block header_scripts %}
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+        <script src="{{ app.paths.theme }}semantic/semantic.min.js"></script>
+        <script src="{{ app.paths.theme }}js/app.js"></script>
+    {% endblock header_scripts %}
+
+    {% block header_analytics %}
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        };
+                i[r].l = 1 * new Date();
+                a = s.createElement(o);
+                m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', '{{ app.config.get('general/ga_code') }}', 'auto');
+
+            {% if is_member() %}
+            ga('set', 'dimension1', '1');
+            ga('set', 'userId', '{{ member.guid }}');
+            {% else %}
+            ga('set', 'dimension1', '0');
+            {% endif %}
+
+            {% block ga_extras %}{% endblock %}
+
+            ga('send', 'pageview');
+        </script>
+    {% endblock header_analytics %}
 
     {% block header_extra_scripts %}{% endblock header_extra_scripts %}
 </head>
@@ -20,7 +68,8 @@
 
 {{ include('partials/_layout_menu_bottom.twig') }}
 
-{{ include('partials/_layout_footer.twig') }}
+{% block footer_extra_scripts %}
+{% endblock footer_extra_scripts %}
 
 </body>
 </html>
