@@ -4,18 +4,15 @@
 
 {% block content %}
     <h1>Collections</h1>
-    <div class="ui divided items">
+
+    <div class="ui cards">
         {% for record in records %}
-            <div class="item">
+            <div class="ui card">
                 <div class="content">
-                    <a class="header" href="{{ record.link }}">{{ record.title }}</a>
+                    <div class="header">{{ record.title }}</div>
                     <div class="description">
                         <p>{{ record.excerpt(80) }}</p>
-                    </div>
-                    <div class="extra">
-                        <a href="{{ record.link }}" class="ui right floated primary button"> View Collection
-                            <i class="right chevron icon"></i>
-                        </a>
+                        <a class="ui button" href="{{ record.link }}">View Collection</a>
                     </div>
                 </div>
             </div>
