@@ -16,7 +16,7 @@
                 <div class="content">
                     <a class="header" href="{{ url('view',{'package':package.id}) }}">{{ package.title }}</a>
                     <div class="description">
-                        <p>{{ item.repeatdescription }}</p>
+                        <p>{{ item.repeatdescription|raw }}</p>
                     </div>
                     <div class="extra">
                         <a href="{{ url('view',{'package':package.id}) }}" class="ui right floated primary button"> Details
