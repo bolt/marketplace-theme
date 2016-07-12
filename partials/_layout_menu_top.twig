@@ -3,6 +3,7 @@
         <a class="item" href="/">Home</a>
         {% if is_member() %}
             <a class="item" href="{{ url('profile') }}">Your Profile ({{ member.displayname }})</a>
+            <a class="item" href="{{ url('profileStarred') }}">Starred Extensions</a>
             <a class="item" href="{{ url('authenticationLogout') }}">Logout</a>
         {% else %}
             <a class="item" href="{{ url('authenticationLogin') }}">Login</a>
