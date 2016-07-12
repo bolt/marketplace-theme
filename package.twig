@@ -164,10 +164,14 @@
                 <div class="item">
                     <i class="large flag outline middle aligned icon"></i>
                     <div class="content">
-                        <span class="header">Latest Version</span>
+                        <span class="header">Latest Version(s)</span>
                         <div class="description">
-                            {% if package.versions %}
-                                {{ package.versions|first }}
+                            {% if versions %}
+                                <ul>
+                                    {% for name, value in versions %}
+                                        <li>{{ value.pretty_version|default('unknown') }} (Bolt v{{ name }}+)</li>
+                                    {% endfor %}
+                                </ul>
                             {% endif %}
                         </div>
                     </div>
