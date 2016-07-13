@@ -185,11 +185,11 @@
                             <ul>
                                 {% if updated.stable is not empty %}
                                     {% set rel_ver = updated.stable|first %}
-                                    <li>{{ rel_ver.released|date('jS F Y')  }} (Release)</li>
+                                    <li>{{ rel_ver.released.date|date('jS F Y')  }} (Release)</li>
                                 {% endif %}
                                 {% if updated.dev is not empty %}
                                     {% set dev_ver = updated.dev|first %}
-                                    <li>{{ dev_ver.released|date('jS F Y')  }} (Development)</li>
+                                    <li>{{ dev_ver.released.date|date('jS F Y')  }} (Development)</li>
                                 {% endif %}
                             </ul>
                         </div>
