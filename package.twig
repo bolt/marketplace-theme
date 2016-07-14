@@ -183,13 +183,13 @@
                         <span class="header">Last Update</span>
                         <div class="description">
                             <ul>
-                                {% if updated.stable is not empty %}
-                                    {% set rel_ver = updated.stable|first %}
-                                    <li>{{ rel_ver.released.date|date('jS F Y')  }} (Release)</li>
+                                {% if updated.stable %}
+                                    {% set rel_ver = updated.stable %}
+                                    <li>{{ rel_ver.updated.date|date('jS F Y')  }} (Release)</li>
                                 {% endif %}
                                 {% if updated.dev is not empty %}
-                                    {% set dev_ver = updated.dev|first %}
-                                    <li>{{ dev_ver.released.date|date('jS F Y')  }} (Development)</li>
+                                    {% set dev_ver = updated.dev %}
+                                    <li>{{ dev_ver.updated.date|date('jS F Y')  }} (Development)</li>
                                 {% endif %}
                             </ul>
                         </div>
