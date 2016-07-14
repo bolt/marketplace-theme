@@ -45,7 +45,12 @@
                                 <input type="hidden" name="repo" value="{{ webhook.repo }}">
                                 <input type="hidden" name="token" value="{{ webhook.token }}">
 
-                                <button type="submit" class="ui green button">Add GitHub webhook<i class="right wrench icon"></i></button>
+                                {% if webhook.token %}
+                                    <button type="submit" class="ui green button">Add GitHub webhook<i class="right wrench icon"></i></button>
+                                {% else %}
+                                    <button type="submit" disabled="disabled" class="ui green button">Add GitHub webhook<i class="right wrench icon"></i></button>
+                                {% endif %}
+
                             </form>
                         {% endif %}
                     {% endif %}
