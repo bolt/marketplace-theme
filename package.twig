@@ -243,7 +243,7 @@
                         {% for suggest in suggested %}
                             {% if suggest.package != package %}
                                 <div class="item">
-                                    <img class="ui avatar image" src="/files/{{ suggest.package.type }}.png">
+                                    <img class="ui avatar image" src="{{ packageIcon(suggest.package) }}">
                                     <div class="content">
                                         <a class="header"
                                            href="{{ url('view', { 'package': suggest.package.id }) }}">{{ suggest.package.title }}</a>
@@ -262,7 +262,7 @@
                     {% for relation in related %}
                         {% if relation != package %}
                             <div class="item">
-                                <img class="ui avatar image" src="/files/{{ relation.type }}.png">
+                                <img class="ui avatar image" src="{{ packageIcon(relation) }}">
                                 <div class="content">
                                     <a class="header" href="{{ url('view',{ 'package': relation.id }) }}">{{ relation.title }}</a>
                                     {{ relation.name }}
