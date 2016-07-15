@@ -31,49 +31,35 @@
     {% endif %}
 
     <div class="ui grid stackable">
-
         <div class="ten wide column">
-
-            <div class="ten wide column">
-                <div class="row">
-                    <h2 class="ui left floated header">Description</h2>
-                    <div class="ui clearing divider"></div>
-                    <p style="font-size: 110%;">{{ package.description|nl2br }}</p>
-                </div>
-            </div>
-
+            <h2 class="ui left floated header">Description</h2>
+            <div class="ui clearing divider"></div>
+            <p style="font-size: 110%;">{{ package.description|nl2br }}</p>
         </div>
 
         <div class="six wide column">
             {{ include('partials/package/_content_sidebar.twig') }}
         </div>
 
-    </div>
+        <div class="sixteen wide column">
+            <div class="row">
+                <h2 class="ui left floated header">Changelog &amp; Releases</h2>
+                <div class="ui clearing divider"></div>
 
-    <br>
-
-    <div class="sixteen wide column">
-        <div class="row">
-            <h2 class="ui left floated header">Changelog &amp; Releases</h2>
-            <div class="ui clearing divider"></div>
-
-            <div class="releases-wrapper">
-                Loading releases …
+                <div class="releases-wrapper">
+                    Loading releases …
+                </div>
             </div>
         </div>
-    </div>
 
-    <br>
+        {{ include('partials/package/_content_related.twig') }}
 
-    {{ include('partials/package/_content_related.twig') }}
-
-    <br>
-
-    <div class="sixteen wide column">
-        <div class="row">
-            <h2 class="ui left floated header">Comments</h2>
-            <div class="ui clearing divider"></div>
-            {{ include('partials/_disqus_comments.twig') }}
+        <div class="sixteen wide column">
+            <div class="row">
+                <h2 class="ui left floated header">Comments</h2>
+                <div class="ui clearing divider"></div>
+                {{ include('partials/_disqus_comments.twig') }}
+            </div>
         </div>
     </div>
 
