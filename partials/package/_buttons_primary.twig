@@ -1,0 +1,47 @@
+<div class="ui right floated main menu">
+    <a class="bug popup icon item" data-content="Downloads" href="#">
+        <i class="download icon"> {{ statistics.downloads(package.id)|default(0) }}</i>
+    </a>
+
+    {% if is_member() %}
+        {% if statistics.isStarredBy(package.id, member.guid) %}
+            {% set star_text = "You have starred this package." %}
+        {% else %}
+            {% set star_text = "Star this package!" %}
+        {% endif %}
+    {% else %}
+        {% set star_text = "You must be logged in to star packages." %}
+    {% endif %}
+    <a class="bug popup icon item"
+            {% if is_member() %}
+                {% if statistics.isStarredBy(package.id, member.guid) %}
+                {%- else %}
+                    href="{{ url('star', { 'package': package.id }) }}"
+                    onclick="ga('send', 'event', {
+                            eventCategory: 'Package',
+                            eventAction: 'Star',
+                            eventLabel: '{{ package.title }}'
+                            });"
+                {% endif %}
+            {% endif %}
+       data-content="{{ star_text }}">
+        <i class="star icon"> {{ statistics.stars(package.id)|default(0) }}</i>
+    </a>
+
+    <a class="github popup icon item"
+       data-content="View source code"
+       target="_blank"
+       href="{{ package.source }}"
+       onclick="ga('send', 'event', {
+               eventCategory: 'Package',
+               eventAction: 'View Source',
+               eventLabel: '{{ package.title }}'
+               });"
+    >
+        {% if "github.com" in package.source %}
+            <i class="alternate github icon"></i>
+        {% else %}
+            <i class="alternate code icon"></i>
+        {% endif %}
+    </a>
+</div>

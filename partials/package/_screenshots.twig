@@ -1,0 +1,16 @@
+<h2 class="ui left floated header">Screenshots</h2>
+<div class="ui clearing divider"></div>
+<div class="slide_gallery scrollbar-inner">
+    <div class="gallery" id="scroll_gallery">
+        {% for image in package.screenshots %}
+            {% if "//" in image %}
+                <img class="image_gallery" src="{{ image }}">
+            {% else %}
+                <img class="image_gallery"
+                     src="{{ package.source|replace({ ('github.com'): 'raw.githubusercontent.com'}) }}/master/{{ image }}">
+            {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+<br>
