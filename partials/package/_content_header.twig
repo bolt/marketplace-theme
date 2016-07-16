@@ -1,21 +1,23 @@
-<div class="eight wide column">
+<div class="ten wide column">
     <h2 class="ui header">
         <img class="ui rounded image" src="{{ packageIcon(package) }}">
         <div class="content">
             {{ package.title }}
             <div class="sub header">by {{ package.authors|join(', ') }}</div>
         </div>
+
+        {{ include('partials/package/button/_usage_cost.twig') }}
+        {{ include('partials/package/button/_boltthemes_live_preview.twig') }}
     </h2>
 </div>
 
 
-<div class="right floated right aligned eight wide column">
-
-    <div class="sixteen wide column divided">
-        {{ include('partials/package/_buttons_primary.twig') }}
-    </div>
-    <div class="sixteen wide column">
-        {{ include('partials/package/_buttons_secondary.twig') }}
+<div class="six wide column right floated right aligned">
+    <div class="ui right floated main menu">
+        {{ include('partials/package/button/_primary_downloads.twig') }}
+        {{ include('partials/package/button/_primary_stars.twig') }}
+        {{ include('partials/package/button/_primary_source.twig') }}
     </div>
 
+    {{ include('partials/package/button/_copy_clipboard.twig') }}
 </div>

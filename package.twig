@@ -32,9 +32,28 @@
 
     <div class="ui grid stackable">
         <div class="ten wide column">
-            <h2 class="ui left floated header">Description</h2>
-            <div class="ui clearing divider"></div>
-            <p style="font-size: 110%;">{{ package.description|nl2br }}</p>
+            <div class="row">
+                <h2 class="ui left floated header">Description</h2>
+                <div class="ui clearing divider"></div>
+                <p style="font-size: 110%;">{{ package.description|nl2br }}</p>
+            </div>
+
+            <br>
+
+            <div class="row">
+                {% if is_member() %}
+                    <div class="ui clearing divider"></div>
+
+                    {% set member = member() %}
+                    {% if member.guid == package.account_id %}
+                        <div class="row">
+                            {{ include('partials/package/button/_maintenance_edit.twig') }}
+                            {{ include('partials/package/button/_maintenance_webhook.twig') }}
+                            {{ include('partials/package/button/_maintenance_statistics.twig') }}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
         </div>
 
         <div class="six wide column">

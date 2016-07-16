@@ -1,0 +1,16 @@
+<a class="github popup icon item"
+   data-content="View source code"
+   target="_blank"
+   href="{{ package.source }}"
+   onclick="ga('send', 'event', {
+           eventCategory: 'Package',
+           eventAction: 'View Source',
+           eventLabel: '{{ package.title }}'
+           });"
+>
+    {% if "github.com" in package.source %}
+        <i class="alternate github icon"></i>
+    {% else %}
+        <i class="alternate code icon"></i>
+    {% endif %}
+</a>

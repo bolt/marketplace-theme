@@ -1,0 +1,16 @@
+<div class="ui left floated">
+    {% if webhook and not webhook.latest %}
+        <form action="{{ url('hookCreator') }}" method="post">
+            <input type="hidden" name="user" value="{{ webhook.user }}">
+            <input type="hidden" name="repo" value="{{ webhook.repo }}">
+            <input type="hidden" name="token" value="{{ webhook.token }}">
+
+            {% if webhook.token %}
+                <button type="submit" class="ui basic button">Add GitHub webhook <i class="right upload icon"></i></button>
+            {% else %}
+                <button type="submit" disabled="disabled" class="ui basic button">Add GitHub webhook <i class="right wrench icon"></i></button>
+            {% endif %}
+
+        </form>
+    {% endif %}
+</div>
