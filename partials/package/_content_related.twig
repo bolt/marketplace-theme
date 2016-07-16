@@ -32,7 +32,9 @@
     <div class="ui sixteen column grid">
         <div class="ui items">
             <div class="item">
-                <img class="ui avatar image" src="{{ packageIcon(package) }}">
+                <div class="ui tiny image">
+                    <img src="{{ packageIcon(package) }}">
+                </div>
                 <div class="content">
                     <a class="header" href="{{ url('viewPackage',{
                         'packageAuthor': package.name|split('/')|first,
