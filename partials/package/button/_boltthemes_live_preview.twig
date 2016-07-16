@@ -1,10 +1,12 @@
-<div class="ui icon buttons right floated">
-    <a class="ui orange button"
-       href="?utm_source=bolt-extension-store&utm_medium=detailpage&utm_term=livepreview&utm_content=theme-livepreview&utm_campaign="
-       target="_blank"
-       onclick="ga('send', 'event', {
-               eventCategory: 'Package',
-               eventAction: 'Live Preview',
-               eventLabel: '{{ package.title }}'
-               });"> View Live Preview </a>
-</div>
+{% if boltthemes and boltthemes.active %}
+    <div class="ui icon buttons right floated">
+        <a class="ui orange button"
+           href="{{ boltthemes.preview_page }}?utm_source=bolt-extension-store&utm_medium=detailpage&utm_term=livepreview&utm_content=theme-livepreview&utm_campaign={{ package.title|url_encode }}"
+           target="_blank"
+           onclick="ga('send', 'event', {
+                   eventCategory: 'Package',
+                   eventAction: 'Live Preview',
+                   eventLabel: '{{ package.title }}'
+                   });"> View Live Preview </a>
+    </div>
+{% endif %}
