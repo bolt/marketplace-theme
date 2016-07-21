@@ -1,5 +1,6 @@
 {% if is_member() %}
-    {% if statistics.isStarredBy(package.id, member.guid) %}
+    {% set already = statistics.isStarredBy(package.id, member.guid) %}
+    {% if already %}
         {% set star_text = "You have starred this package." %}
     {% else %}
         {% set star_text = "Star this package!" %}
@@ -9,17 +10,14 @@
 {% endif %}
 
 <a class="bug popup icon item"
-        {% if is_member() %}
-            {% if statistics.isStarredBy(package.id, member.guid) %}
-            {%- else %}
-                href="{{ url('star', { 'package': package.id }) }}"
-                onclick="ga('send', 'event', {
-                        eventCategory: 'Package',
-                        eventAction: 'Star',
-                        eventLabel: '{{ package.title }}'
-                        });"
-            {% endif %}
-        {% endif %}
+    {% if is_member() and not already %}
+        href="{{ url('star', { 'package': package.id }) }}"
+        onclick="ga('send', 'event', {
+                eventCategory: 'Package',
+                eventAction: 'Star',
+                eventLabel: '{{ package.title }}'
+                });"
+    {% endif %}
    data-content="{{ star_text }}">
     <i class="star icon"> {{ statistics.stars(package.id)|default(0) }}</i>
 </a>
