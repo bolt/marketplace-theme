@@ -2,7 +2,7 @@
     <div class="ui inverted menu small no_radius" id="top_bar">
         <a class="item" href="/">Home</a>
         {% if is_member() %}
-            <a class="item" href="{{ url('profile') }}">Your Profile ({{ member.displayname }})</a>
+            <a class="item" href="{{ url('profilePackages') }}">Your Profile ({{ member.displayname }})</a>
             <a class="item" href="{{ url('profileStarred') }}">Starred Extensions</a>
             <a class="item" href="{{ url('authenticationLogout') }}">Logout</a>
         {% else %}
