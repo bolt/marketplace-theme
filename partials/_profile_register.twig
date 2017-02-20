@@ -19,32 +19,32 @@
 
     <br>
 
-    {{ form_start(form_register, {'attr': {'class': 'ui form'}}) }}
+    {{ form_start(form_profile_register, {'attr': {'class': 'ui form'}}) }}
 
-    {{ form_errors(form_register) }}
+    {{ form_errors(form_profile_register) }}
 
     <div class="field">
-        {{ form_row(form_register.displayname) }}
+        {{ form_row(form_profile_register.displayname) }}
     </div>
     <div class="field">
-        {{ form_row(form_register.email) }}
+        {{ form_row(form_profile_register.email) }}
     </div>
 
     {% if transitional %}
-        {% do form_register.password.setRendered %}
+        {% do form_profile_register.password.setRendered %}
     {% else %}
         <div class="field">
-            {{ form_row(form_register.password.first) }}
+            {{ form_row(form_profile_register.password.first) }}
         </div>
         <div class="field">
-            {{ form_row(form_register.password.second) }}
+            {{ form_row(form_profile_register.password.second) }}
         </div>
     {% endif %}
 
     <br>
-    {{ form_row(form_register.submit, {'attr': {'class': 'ui fluid large green submit button'}, 'label': 'Create Account »'}) }}
+    {{ form_row(form_profile_register.submit, {'attr': {'class': 'ui fluid large green submit button'}, 'label': 'Create Account »'}) }}
 
-    {{ form_end(form_register) }}
+    {{ form_end(form_profile_register) }}
 
 
 {% endblock %}

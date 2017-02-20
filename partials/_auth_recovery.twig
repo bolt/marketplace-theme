@@ -14,11 +14,10 @@
 
     <div class="recovery ui two column centered grid">
         <div class="column member-recovery">
-
             {%  if stage == 'email' %}
-                {{ _self.recovery_start(form_profile_recovery) }}
+                {{ _self.recovery_start(form_profile_recovery_request) }}
             {% elseif stage == 'password' %}
-                {{ _self.recovery_finish(form_profile_recovery) }}
+                {{ _self.recovery_finish(form_profile_recovery_submit) }}
             {% elseif stage == 'submitted' %}
                 <p>An email has been send to {{ email }}. Please follow the instructions to complete the process.</p>
             {% elseif stage == 'reset' %}
@@ -27,7 +26,6 @@
             {% else %}
                 <p>Invalid request!</p>
             {% endif %}
-
         </div>
     </div>
 
