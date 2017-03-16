@@ -45,7 +45,7 @@
                     <div class="control_group from">
                         From: <br>
                         <select v-model="from.year" class="ui dropdown">
-                            <option v-for='number in ["2013","2014","2015","2016"]' :value="number">
+                            <option v-for='number in ["2013","2014","2015","2016", "2017", "2018"]' :value="number">
                                 {% raw %}
                                     {{ number }}
                                 {% endraw %}
@@ -72,7 +72,7 @@
                     <div class="control_group to">
                         To: <br>
                         <select v-model="to.year" class="ui dropdown">
-                            <option v-for='number in ["2013","2014","2015","2016"]' :value="number">
+                            <option v-for='number in ["2013","2014","2015","2016", "2017", "2018"]' :value="number">
                                 {% raw %}
                                     {{ number }}
                                 {% endraw %}
