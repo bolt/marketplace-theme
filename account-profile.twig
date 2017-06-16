@@ -15,7 +15,7 @@
                     <img src="{{ packageIcon(package) }}">
                 </div>
                 <div class="content">
-                    <a href="{{ url('view', {'package': package.id}) }}" class="header">{{ package.title }}</a>
+                    <a href="{{ path('view', {'package': package.id}) }}" class="header">{{ package.title }}</a>
                     <div class="meta">
                         <span class="cinema">by {{ package.authors|join(', ') }}</span>
                     </div>
@@ -24,19 +24,19 @@
                         <p>{{ package.description }}</p>
                     </div>
                     <div class="extra">
-                        <a href="{{ url('view', {'package': package.id}) }}" class="ui right floated primary button"> View
+                        <a href="{{ path('view', {'package': package.id}) }}" class="ui right floated primary button"> View
                             <i class="right chevron icon"></i>
                         </a>
-                        <a href="{{ url('stats', {'package': package.id}) }}" class="ui right floated purple button"> Stats
+                        <a href="{{ path('stats', {'package': package.id}) }}" class="ui right floated purple button"> Stats
                             <i class="right bar chart icon"></i>
                         </a>
-                        <a href="{{ url('edit', {'package': package.id}) }}" class="ui right floated button"> Edit
+                        <a href="{{ path('edit', {'package': package.id}) }}" class="ui right floated button"> Edit
                             <i class="right wrench icon"></i>
                         </a>
-                        <a href="{{ url('update', {'package': package.id}) }}" class="ui right floated orange button"> Update
+                        <a href="{{ path('updatePackage', {'package': package.id}) }}" class="ui right floated orange button"> Update
                             <i class="right repeat icon"></i>
                         </a>
-                        <a href="{{ url('testListing', {'package': package.id}) }}" class="ui right floated green button"> Run Tests
+                        <a href="{{ path('testListing', {'package': package.id}) }}" class="ui right floated green button"> Run Tests
                             <i class="right chevron icon"></i>
                         </a>
                         <div class="ui label">
