@@ -26,7 +26,7 @@
         <div class="right floated seven wide column">
 
             {% if webhook and not webhook.latest %}
-                {% if 'github' in member_providers() and 'github.com' in form.source.vars.value %}
+                {% if 'github' in auth_providers() and 'github.com' in form.source.vars.value %}
                     <div class="ui segment">
                         <h2 class="ui header">Create webhook</h2>
 

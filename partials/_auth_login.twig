@@ -1,7 +1,7 @@
 {% extends twigparent %}
 
 {% block login %}
-    {% include "@Members/feedback/feedback.twig" %}
+    {% include "@Auth/feedback/feedback.twig" %}
 
     <div class="ui middle aligned center aligned grid">
         <div class="column" style="max-width: 450px;">
@@ -20,7 +20,7 @@
 
             <div class="ui message">
                 <p>
-                Don't have an account yet? <a href="{{ url('membersProfileRegister') }}">Register for one here</a>
+                Don't have an account yet? <a href="{{ url('authProfileRegister') }}">Register for one here</a>
                 </p>
                 <p>
                 Forgotten Password? <a href="{{ url('authenticationPasswordReset') }}">Reset your password here</a>

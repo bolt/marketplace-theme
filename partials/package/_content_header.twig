@@ -3,8 +3,8 @@
         <img class="ui rounded image" src="{{ packageIcon(package) }}">
         <div class="content">
             {{ package.title }}
-            {% set packageAuthor = member(package.account_id) %}
-            <div class="sub header" title="{{ packageAuthor.displayName }}">by {{ package.authors|join(', ') }}</div>
+            {% set packageAuthor = auth(package.account_id) %}
+            <div class="sub header" title="{{ packageAuthor.displayName|default('Unknown') }}">by {{ package.authors|join(', ') }}</div>
         </div>
 
         {{ include('partials/package/button/_usage_cost.twig') }}

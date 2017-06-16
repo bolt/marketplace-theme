@@ -39,8 +39,8 @@
             <br>
 
             <div class="row">
-                {% if is_member() %}
-                    {% set member = member() %}
+                {% if is_auth() %}
+                    {% set member = auth() %}
                     {% if member.guid == package.account_id %}
                         <div class="ui clearing divider"></div>
                         <div class="row">

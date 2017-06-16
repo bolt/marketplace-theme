@@ -1,4 +1,4 @@
-{%- if is_member() %}{% set member = member() %}{% endif -%}
+{%- if is_auth() %}{% set member = auth() %}{% endif -%}
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +39,7 @@
 
             ga('create', '{{ app.config.get('general/ga_code') }}', 'auto');
 
-            {% if is_member() %}
+            {% if is_auth() %}
             ga('set', 'dimension1', '1');
             ga('set', 'userId', '{{ member.guid }}');
             {% else %}
