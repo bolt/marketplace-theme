@@ -24,6 +24,13 @@
         </div>
 
         <div class="right floated seven wide column">
+            <div class="ui segment">
+                <p>Before submiting a stable version your extension should be installable
+                and working on a default Bolt install. If it isn't we suggest you do not
+                publish as a stable extension or that you do not use the market for that
+                extension.</p>
+                <p>Extensions that don't follow this might be removed or disabled.</p>
+            </div>
 
             {% if webhook and not webhook.latest %}
                 {% if 'github' in auth_providers() and 'github.com' in form.source.vars.value %}
